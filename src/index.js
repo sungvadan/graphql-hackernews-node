@@ -1,15 +1,6 @@
 const { GraphQLServer } = require('graphql-yoga')
 const { prisma } = require('./generated/prisma-client')
 
-const findLinkById = (id) => {
-    for (let i = 0; i < links.length; i++) {
-        if (links[i].id === id) {
-            return i
-        }
-    }
-
-    return -1;
-}
 const resolvers = {
     Query: {
         info: () => `This is the API of a hackernew Clone`,
@@ -21,28 +12,7 @@ const resolvers = {
         }
     },
     Mutation: {
-        post: (parent, args, context) => {
-            return context.prisma.createLink({
-                description: args.description,
-                url: args.url,
-            })
-        },
-        updateLink: (parent, args, context) => {
-            return context.prisma.updateLink({
-                data: {
-                    url: args.url,
-                    description: args.description,
-                },
-                where: {
-                    id: args.id
-                }
-            })
-        },
-        deleteLink: (parent, args, context) => {
-            return context.prisma.deleteLink({
-                id: args.id
-            })
-        }
+
     },
 }
 
