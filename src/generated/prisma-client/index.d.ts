@@ -63,7 +63,7 @@ export interface Prisma {
    * Mutations
    */
 
-  createLink: (data: { description: *, url: * }) => LinkPromise;
+  createLink: (data: LinkCreateInput) => LinkPromise;
   updateLink: (args: {
     data: LinkUpdateInput;
     where: LinkWhereUniqueInput;
@@ -104,10 +104,10 @@ export interface ClientConstructor<T> {
 export type LinkOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "creatAt_ASC"
-  | "creatAt_DESC"
-  | "updateAt_ASC"
-  | "updateAt_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
   | "description_ASC"
   | "description_DESC"
   | "url_ASC"
@@ -134,22 +134,22 @@ export interface LinkWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  creatAt?: Maybe<DateTimeInput>;
-  creatAt_not?: Maybe<DateTimeInput>;
-  creatAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  creatAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  creatAt_lt?: Maybe<DateTimeInput>;
-  creatAt_lte?: Maybe<DateTimeInput>;
-  creatAt_gt?: Maybe<DateTimeInput>;
-  creatAt_gte?: Maybe<DateTimeInput>;
-  updateAt?: Maybe<DateTimeInput>;
-  updateAt_not?: Maybe<DateTimeInput>;
-  updateAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updateAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updateAt_lt?: Maybe<DateTimeInput>;
-  updateAt_lte?: Maybe<DateTimeInput>;
-  updateAt_gt?: Maybe<DateTimeInput>;
-  updateAt_gte?: Maybe<DateTimeInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
   description?: Maybe<String>;
   description_not?: Maybe<String>;
   description_in?: Maybe<String[] | String>;
@@ -185,19 +185,16 @@ export interface LinkWhereInput {
 
 export interface LinkCreateInput {
   id?: Maybe<ID_Input>;
-  creatAt: DateTimeInput;
   description: String;
   url: String;
 }
 
 export interface LinkUpdateInput {
-  creatAt?: Maybe<DateTimeInput>;
   description?: Maybe<String>;
   url?: Maybe<String>;
 }
 
 export interface LinkUpdateManyMutationInput {
-  creatAt?: Maybe<DateTimeInput>;
   description?: Maybe<String>;
   url?: Maybe<String>;
 }
@@ -219,16 +216,16 @@ export interface NodeNode {
 
 export interface Link {
   id: ID_Output;
-  creatAt: DateTimeOutput;
-  updateAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
   description: String;
   url: String;
 }
 
 export interface LinkPromise extends Promise<Link>, Fragmentable {
   id: () => Promise<ID_Output>;
-  creatAt: () => Promise<DateTimeOutput>;
-  updateAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
   description: () => Promise<String>;
   url: () => Promise<String>;
 }
@@ -237,8 +234,8 @@ export interface LinkSubscription
   extends Promise<AsyncIterator<Link>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  creatAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updateAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   description: () => Promise<AsyncIterator<String>>;
   url: () => Promise<AsyncIterator<String>>;
 }
@@ -247,8 +244,8 @@ export interface LinkNullablePromise
   extends Promise<Link | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  creatAt: () => Promise<DateTimeOutput>;
-  updateAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
   description: () => Promise<String>;
   url: () => Promise<String>;
 }
@@ -373,8 +370,8 @@ export interface LinkSubscriptionPayloadSubscription
 
 export interface LinkPreviousValues {
   id: ID_Output;
-  creatAt: DateTimeOutput;
-  updateAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
   description: String;
   url: String;
 }
@@ -383,8 +380,8 @@ export interface LinkPreviousValuesPromise
   extends Promise<LinkPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  creatAt: () => Promise<DateTimeOutput>;
-  updateAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
   description: () => Promise<String>;
   url: () => Promise<String>;
 }
@@ -393,8 +390,8 @@ export interface LinkPreviousValuesSubscription
   extends Promise<AsyncIterator<LinkPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  creatAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updateAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   description: () => Promise<AsyncIterator<String>>;
   url: () => Promise<AsyncIterator<String>>;
 }

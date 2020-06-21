@@ -16,12 +16,8 @@ const resolvers = {
         feed: (root, args, context, info) => {
             return context.prisma.links()
         },
-        link: (parent, args) => {
-            let index = findLinkById(args.id)
-            if (index !== -1) {
-                return links[index]
-            }
-            return null;
+        link: (root, args, context) => {
+            return context.prisma.link({id: args.id})
         }
     },
     Mutation: {
@@ -31,25 +27,21 @@ const resolvers = {
                 url: args.url,
             })
         },
-        updateLink: (parent, args) => {
-            let link = null
-            let index = findLinkById(args.id)
-            if (index !== -1) {
-                link = links[index]
-                link.url = args.url
-                link.description = args.description
-                links = Object.assign([], links, {index: link})
-            }
-            return link
+        updateLink: (parent, args, context) => {
+            return context.prisma.updateLink({
+                data: {
+                    url: args.url,
+                    description: args.description,
+                },
+                where: {
+                    id: args.id
+                }
+            })
         },
-        deleteLink: (parent, args) => {
-            let index = findLinkById(args.id)
-            let link = null
-            if (index !== -1) {
-                link = links[index]
-                links.splice(index, 1)
-            }
-            return link
+        deleteLink: (parent, args, context) => {
+            return context.prisma.deleteLink({
+                id: args.id
+            })
         }
     },
 }

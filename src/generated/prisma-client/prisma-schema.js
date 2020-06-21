@@ -15,8 +15,8 @@ scalar DateTime
 
 type Link {
   id: ID!
-  creatAt: DateTime!
-  updateAt: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   description: String!
   url: String!
 }
@@ -29,7 +29,6 @@ type LinkConnection {
 
 input LinkCreateInput {
   id: ID
-  creatAt: DateTime!
   description: String!
   url: String!
 }
@@ -42,10 +41,10 @@ type LinkEdge {
 enum LinkOrderByInput {
   id_ASC
   id_DESC
-  creatAt_ASC
-  creatAt_DESC
-  updateAt_ASC
-  updateAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
   description_ASC
   description_DESC
   url_ASC
@@ -54,8 +53,8 @@ enum LinkOrderByInput {
 
 type LinkPreviousValues {
   id: ID!
-  creatAt: DateTime!
-  updateAt: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   description: String!
   url: String!
 }
@@ -79,13 +78,11 @@ input LinkSubscriptionWhereInput {
 }
 
 input LinkUpdateInput {
-  creatAt: DateTime
   description: String
   url: String
 }
 
 input LinkUpdateManyMutationInput {
-  creatAt: DateTime
   description: String
   url: String
 }
@@ -105,22 +102,22 @@ input LinkWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  creatAt: DateTime
-  creatAt_not: DateTime
-  creatAt_in: [DateTime!]
-  creatAt_not_in: [DateTime!]
-  creatAt_lt: DateTime
-  creatAt_lte: DateTime
-  creatAt_gt: DateTime
-  creatAt_gte: DateTime
-  updateAt: DateTime
-  updateAt_not: DateTime
-  updateAt_in: [DateTime!]
-  updateAt_not_in: [DateTime!]
-  updateAt_lt: DateTime
-  updateAt_lte: DateTime
-  updateAt_gt: DateTime
-  updateAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
   description: String
   description_not: String
   description_in: [String!]
